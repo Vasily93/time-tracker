@@ -40,7 +40,7 @@ function TimeTracker() {
   }
 
   return (
-    <div className="App">
+    <div>
       <form onSubmit={e => handleSubmit(e)}>
         <label htmlFor='new-tag'>New Tag: </label>
         <input id='new-tag' value={newTag} onChange={e => setNewTag(e.target.value)} />
@@ -48,17 +48,18 @@ function TimeTracker() {
       </form>
       <ul>
       {tags.map(({name, id, totalTime}, index) => {
-        if(index === 0) return <li key={id}><button>{name} : {Math.floor(totalTime/1000)} seconds</button></li>
+        if(index === 0) return <li key={id}><button className='TagTab'>{name} : {Math.floor(totalTime/1000)} sec</button></li>
         return (<li key={id}><button 
+          className='TagTab' 
           onClick={e => handleClick(e.target.id)}
           id={id}
-          style={{backgroundColor: currentTagID === id ? 'lightblue': 'white'}}
+          style={{backgroundColor: currentTagID === id ? 'lightblue': 'darkgray'}}
         >
           {name} : {Math.floor(totalTime/1000)} seconds
         </button></li>)
       })}
     </ul>
-    <h3>Current Tag: {tags.find(tag => tag.id === currentTagID).name}</h3>
+    <p>Current Tag: {tags.find(tag => tag.id === currentTagID).name}</p>
     </div>
   );
 }

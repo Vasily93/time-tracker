@@ -1,0 +1,38 @@
+body {
+  display: flex;
+  justify-content: center ;
+}
+
+.App {
+  display: flex;
+  align-content: center;
+  
+}
+
+button {
+  color: white;
+  background-color: rgb(17, 17, 94);
+  border: none;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: large;
+}
+
+li{
+  margin: 10px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.TagTab {
+  min-width: 200px;
+}
+
+input {
+  min-height: 21px;
+  margin: 5px;
+}
+
+
