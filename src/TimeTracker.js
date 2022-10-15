@@ -6,7 +6,7 @@ function TimeTracker({tags, onEditTags}) {
 
   function updateTagInTags(tagID, timeStamp) {
     const updatedTags = tags.map(tag => {
-      if (tag.id === tagID) {
+      if (tag.id == tagID) {
         tag.totalTime = tag.totalTime +=  (timeStamp - timer) 
       }
       return tag;
@@ -16,17 +16,17 @@ function TimeTracker({tags, onEditTags}) {
 
   function handleClick(clickedID) {
     const timeStamp =  new Date().getTime()
+    const tagOption = clickedID === currentTagID ? clickedID : currentTagID;
     setTimer(timeStamp)
-    setCurrentTagID(prevTagID => {
-      if(prevTagID === clickedID) {
-        updateTagInTags(clickedID, timeStamp)
+    setCurrentTagID(() => {
+      if(currentTagID === clickedID) {
         return 12345
-      } else if(prevTagID !== clickedID) {
-        updateTagInTags(prevTagID, timeStamp)
+      } else if(currentTagID !== clickedID) {
         return clickedID
       }
       
     })
+    updateTagInTags(tagOption, timeStamp)
   }
 
   return (
